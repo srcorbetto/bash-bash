@@ -16,19 +16,6 @@ class AuthForm extends Component {
         this.onAddCredentials = this.onAddCredentials.bind(this);
     } 
 
-    componentWillMount() {
-        auth.onAuthStateChanged(firebaseUser => {
-          if (firebaseUser) {
-              console.log(firebaseUser);
-              this.setState({
-                firebaseUser: firebaseUser.email
-              })
-          } else {
-              console.log('not logged in');
-          }
-        })
-      }
-
       onSignIn = () => {
         const emailFromState = this.state.email;
         const passwordFromState = this.state.password;
@@ -51,14 +38,12 @@ class AuthForm extends Component {
             this.setState({
                 email: userValue
             })
-        //   email = e.target.value;
           console.log(`Email: ${this.state.email}`)
         } else if (e.target.type === 'password') {
             this.setState({
                 password: userValue
             })
-        //   password = e.target.value;
-          console.log(`Password: ${this.state.password}`)
+            console.log(`Password: ${this.state.password}`)
         }
       }
 
